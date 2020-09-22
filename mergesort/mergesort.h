@@ -7,4 +7,11 @@
 
 void mergesort(int size, int values[]);
 
+void mergesortRange(int values[], int startIndex, int endIndex);
+
+bool needsSorting(int rangeSize);
+
+void mergeRanges(int values[], int startIndex, int midPoint,
+  int endIndex);
+
 #endif
