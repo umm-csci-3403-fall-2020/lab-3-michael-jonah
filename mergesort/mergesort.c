@@ -8,13 +8,14 @@ void mergesort(int size, int values[]) {
 
 void mergesortRange(int values[], int startIndex, int endIndex) {
     int rangeSize = endIndex - startIndex;
-    if (rangeSize <= 2) {
+    if (rangeSize >= 2) {
       int midPoint = (startIndex + endIndex) / 2;
       mergesortRange(values, startIndex, midPoint);
       mergesortRange(values, midPoint, endIndex);
       mergeRanges(values, startIndex, midPoint, endIndex);
     }
-  }
+    return;
+}
 
 void mergeRanges(int values[], int startIndex, int midPoint,
   int endIndex) {
@@ -25,7 +26,7 @@ void mergeRanges(int values[], int startIndex, int midPoint,
      * then merge them into a single sorted array, copy that back, and return.
      */
     int rangeSize = endIndex - startIndex;
-    int *destination = (int *) malloc (sizeof (int) * rangeSize);
+    int *destination = (int *) malloc (sizeof (int) * (rangeSize+1));
     int firstIndex = startIndex;
     int secondIndex = midPoint;
     int copyIndex = 0;
@@ -52,9 +53,11 @@ void mergeRanges(int values[], int startIndex, int midPoint,
     for (int i = 0; i < rangeSize; ++i) {
       values[i + startIndex] = destination[i];
     }
-  }
+    free(destination);
+    return;
+}
 
-  bool needsSorting(int rangeSize) {
+bool needsSorting(int rangeSize) {
     return rangeSize >= 2;
-  }
+}
 
