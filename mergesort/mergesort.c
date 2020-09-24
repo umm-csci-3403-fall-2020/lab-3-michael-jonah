@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 void mergesort(int size, int values[]) {
-  mergesortRange(values, 0, (size - 1));
+  mergesortRange(values, 0, size);
   return;
 }
 
@@ -26,7 +26,7 @@ void mergeRanges(int values[], int startIndex, int midPoint,
      * then merge them into a single sorted array, copy that back, and return.
      */
     int rangeSize = endIndex - startIndex;
-    int *destination = (int *) malloc (sizeof (int) * (rangeSize+1));
+    int *destination = (int *) malloc (sizeof (int) * (rangeSize));
     int firstIndex = startIndex;
     int secondIndex = midPoint;
     int copyIndex = 0;
